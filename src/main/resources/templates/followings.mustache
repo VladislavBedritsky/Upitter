@@ -1,0 +1,26 @@
+{{>parts/head}}
+
+{{#userChannel}}
+<h3 align="center">
+    {{username}}
+</h3>
+{{/userChannel}}
+
+<h4 align="center" class="mt-2">{{type}}</h4>
+
+<ul class="list-group mt-4 mx-auto w-75">
+    {{#users}}
+
+    <li class="list-group-item mt-2">
+        {{#userImages}}
+        <a href="/user-form/{{userId}}">
+            <img src="/img/{{fileName}}" width="50" height="50" class="align-self-start mr-3 rounded-circle" alt="Responsive image">
+        </a>
+        {{/userImages}}
+        <a href="/user-form/{{id}}">{{username}}</a>
+    </li>
+
+    {{/users}}
+</ul>
+
+{{>parts/foot}}

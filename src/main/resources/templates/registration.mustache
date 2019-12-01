@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- совместимость со всеми устройствами -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9D0F5">
+    <a class="navbar-brand mb-0 h1 " href="/">Upitter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+
+<div class="container mt-5" >
+
+    <h3>
+        Registration
+    </h3>
+
+    <div class="text-danger">
+        {{#q}}
+        {{q}}
+        {{/q}}
+
+        {{#q1}}
+        {{q1}}
+        {{/q1}}
+
+        {{#q2}}
+        {{q2}}
+        {{/q2}}
+    </div>
+
+    <form action="/registration" method="post">
+        <div class="mt-4 w-50 ">
+            <input type="text" class="form-control" placeholder="Username"  name="username">
+        </div>
+        <div class="mt-2 w-50">
+            <input type="password"  class="form-control" placeholder="Password" name="password">
+        </div>
+        <div class="mt-2 w-50">
+            <input type="password"  class="form-control" placeholder="Password" name="password1">
+        </div>
+        <div class="mt-2 w-50 ">
+            <input type="email"  class="form-control" placeholder="your@email.com" name="email">
+        </div>
+        <div class="mt-3 w-50 ">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <button type="submit" class="btn btn-success">Sign in</button>
+        </div>
+    </form>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

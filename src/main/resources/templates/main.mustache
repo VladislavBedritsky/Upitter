@@ -1,0 +1,82 @@
+{{>parts/head}}
+
+<form method="post" action="/filter" class="mt-2">
+    <div align="right">
+        <input type="text" name="filter" class="form-control w-25" placeholder="Find post by Title">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit" class="btn btn-info mt-2">Find</button>
+</form>
+
+<div class="mt-3" align="center">
+    <h3>
+        Posts
+    </h3>
+</div>
+
+
+{{#messages}}
+<div class="container">
+    <div class="row">
+
+        <div class="card text-center mt-4 w-75 mx-auto" >
+            <div class="card-header container">
+                <div class="row">
+
+                    <a class="nav-link align-self-center" href="/user-form/{{userId}}"  style= "color: #58ACFA">{{userName}}</a>
+                    {{#image}}
+                    <a href="/user-form/{{userId}}">
+                        <img src="/img/{{fileName}}" width="50" height="50" class="align-self-start rounded-circle" alt="Responsive image">
+                    </a>
+                    {{/image}}
+
+                    {{#time}}
+                    <a class="nav-link disabled align-self-center"><i>{{time}}</i></a>
+                    {{/time}}
+
+                    <a class="align-self-top ml-auto"  href="/main/like/{{id}}">
+                        <i class="fa fa-heart" style="font-size: 1.7em; color: #FF0040;"></i>
+                    </a>
+                    <a href="main/like/{{id}}/list" class="align-self-top ml-1 mr-2">
+                        {{amountLikes}}
+                    </a>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{tag}}</h5>
+                <p class="card-text">{{text}}</p>
+                {{#filename}}
+                <img src="/img/{{filename}}" class="img-fluid" alt="Responsive image">
+                {{/filename}}
+            </div>
+        </div>
+
+        {{#is}}
+        <div>
+            <a class="nav-link align-self-center mt-4" href="update/{{id}}"><i class="fa fa-edit" style="font-size: 1.5em; color: #585858;"></i></a>
+            <a class="nav-link align-self-center" href="remove/{{id}}"><i class="fa fa-trash" style="font-size: 1.5em; color: #585858;"></i></a>
+        </div>
+        {{/is}}
+    </div>
+</div>
+{{/messages}}
+
+
+{{>parts/foot}}
+
+
+<!--Delete-->
+<!--<form method="post" action="remove">-->
+<!--    <input type="hidden" name="remove">-->
+<!--    <button type="submit">Delete</button>-->
+<!--</form>-->
+
+<!--Messages:-->
+<!--{{#messages}}-->
+<!--<div>-->
+<!--    <span>{{text}}</span>-->
+<!--    <i>{{tag}}</i>-->
+<!--    <a href="remove/{{id}}" name="remove">Delete</a>-->
+<!--</div>-->
+<!--{{/messages}}-->
+

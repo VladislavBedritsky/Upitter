@@ -1,0 +1,31 @@
+{{>parts/head}}
+
+
+<form method="post" action="/user">
+
+    <h4>
+        Settings
+    </h4>
+
+    <div class="mt-4">
+    <input type="text" class="form-control w-25" name="username" value="{{user.username}}">
+    </div>
+
+    {{#roles}}
+    <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons" >
+        <label class="btn btn-secondary" >
+            <input type="checkbox" name="{{.}}">
+            {{.}}
+        </label>
+    </div>
+    {{/roles}}
+
+    <div class="mt-4">
+        <input type="hidden" value="{{user.id}}" name="userId">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit" class="btn btn-info px-4">Save</button>
+    </div>
+</form>
+
+
+{{>parts/foot}}

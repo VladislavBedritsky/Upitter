@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #A9D0F5">
+    <a class="navbar-brand mb-0 h1 " href="/"> <i class="fa fa-underline" style="font-size: 1.2em;color: #585858;"></i>pitter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-size: 1.2em;">
+        <ul class="navbar-nav mr-auto">
+
+            {{#user}}
+            <li class="nav-item active my-auto">
+                <a class="nav-link " href="/user-form/{{id}}">
+                    <i class="fa fa-home"  style= "font-size: 1.2em;color: #585858;"></i> Home
+                </a>
+            </li>
+            {{/user}}
+
+            <li class="nav-item active">
+                <a class="nav-link " href="/main">News</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link " href="/user/profile">Settings</a>
+            </li>
+            {{#is}}
+            <li class="nav-item active ">
+                <a class="nav-link " href="/user"><i class="fa fa-address-card mr-1" style= "font-size: 1.1em;color: #585858;"></i>Users</a>
+            </li>
+            {{/is}}
+        </ul>
+
+        {{#user}}
+        {{#is}}
+        <div class="navbar-text mr-2">
+            <a href="/user-form/{{id}}">
+                {{username}}<i class="fa fa-audio-description ml-1" style= "font-size: 1.2em;color: #DF0101"></i>
+            </a>
+        </div>
+        {{/is}}
+        {{^is}}
+        <div class="navbar-text mr-2">
+            <a href="/user-form/{{id}}">
+                {{username}}<i class="fa fa-user ml-1" style= "font-size: 1.2em;color: #585858"></i>
+            </a>
+        </div>
+        {{/is}}
+        {{/user}}
+
+
+        {{#regButton}}
+        <div class="navbar-text">
+            <a href="/registration">
+        Registration
+        </a>
+        </div>
+        {{/regButton}}
+
+        <!--не видно на страницах кот-е доступны всем пользователям-->
+        {{^AuthUsers}}
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+            <button type="submit" class="btn btn-link text-dark">Sign Out</button>
+        </form>
+        {{/AuthUsers}}
+
+    </div>
+</nav>

@@ -1,0 +1,140 @@
+{{>parts/head}}
+
+<form method="post">
+    {{#userImages}}
+    <div align="center">
+        <h3 class="ml-2">
+            {{userName}}
+        </h3>
+        <div class="card mt-3" style="width: 18rem;">
+            <img src="/img/{{fileName}}" class="card-img-top rounded-lg" alt="Responsive image">
+        </div>
+    </div>
+    <div align="center">
+        {{#isCurrentUser}}
+        <a class="btn btn-secondary mt-2" href="delete-image/{{id}}">Delete photo</a>
+        {{/isCurrentUser}}
+
+        {{^isCurrentUser}}
+
+        {{#isFollower}}
+        <a class="btn btn-outline-success mt-2" href="/user/unfollow/{{userId}}">Unfollow</a>
+        {{/isFollower}}
+        {{^isFollower}}
+        <a class="btn btn-success mt-2" href="/user/follow/{{userId}}">Follow</a>
+        {{/isFollower}}
+
+        {{/isCurrentUser}}
+    </div>
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-tittle">Followings</div>
+                        <h3 class="card-text">
+                            <a href="/user/followings/{{userId}}/list">{{followingsCount}}</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-tittle">Followers</div>
+                        <h3 class="card-text">
+                            <a href="/user/followers/{{userId}}/list">{{followersCount}}</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/userImages}}
+</form>
+
+{{#user}}
+<form method="post" action="/user-form/{{id}}" enctype="multipart/form-data">
+    {{/user}}
+
+    {{#isCurrentUser}}
+    <h5 class=" ml-2 mt-3" align="center">Make a twit</h5>
+
+    <div class="input-group mt-3 mx-auto">
+        <div class="input-group-prepend w-25">
+            <input type="text" name="tag" aria-label="First name" class="form-control" placeholder="Title">
+        </div>
+        <div class="w-50">
+            <input type="text" name="text" aria-label="Last name" class="form-control" placeholder="Message">
+        </div>
+        <div class="custom-file w-25">
+            <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+    </div>
+
+    <div class="mt-2" align="center">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <button type="submit" class="btn btn-info mt-2 px-4">Send</button>
+    </div>
+</form>
+{{/isCurrentUser}}
+
+
+<div class="mt-3" align="center">
+    <h3>
+        Posts
+    </h3>
+</div>
+
+{{#messages}}
+<div class="container">
+    <div class="row">
+
+        <div class="card text-center mt-4 w-75 mx-auto" >
+            <div class="card-header container">
+                <div class="row">
+
+                    <a class="nav-link align-self-center" href="/user-form/{{userId}}"  style= "color: #58ACFA">{{userName}}</a>
+                    {{#image}}
+                    <a href="/user-form/{{userId}}">
+                        <img src="/img/{{fileName}}" width="50" height="50" class="align-self-start rounded-circle" alt="Responsive image">
+                    </a>
+                    {{/image}}
+
+                    {{#time}}
+                    <a class="nav-link disabled align-self-center"><i>{{time}}</i></a>
+                    {{/time}}
+
+                    <a class="align-self-top ml-auto"  href="/user-form/like/{{id}}">
+                        <i class="fa fa-heart" style="font-size: 1.7em; color: #FF0000;"></i>
+                    </a>
+                    <a href="/user-form/like/{{id}}/list" class="align-self-top ml-1 mr-2">
+                        {{amountLikes}}
+                    </a>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{tag}}</h5>
+                <p class="card-text">{{text}}</p>
+                {{#filename}}
+                <img src="/img/{{filename}}" class="img-fluid" alt="Responsive image">
+                {{/filename}}
+            </div>
+        </div>
+
+        {{#isCurrentUser}}
+        <div>
+            <a class="nav-link align-self-center mt-4" href="update/{{id}}"><i class="fa fa-edit" style="font-size: 1.5em; color: #585858;"></i></a>
+            <a class="nav-link align-self-center" href="remove/{{id}}"><i class="fa fa-trash" style="font-size: 1.5em; color: #585858;"></i></a>
+        </div>
+        {{/isCurrentUser}}
+    </div>
+</div>
+
+{{/messages}}
+
+
+{{>parts/foot}}
