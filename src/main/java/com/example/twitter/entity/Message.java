@@ -26,7 +26,7 @@ public class Message {
             joinColumns = {@JoinColumn(name="message_id")},
             inverseJoinColumns = {@JoinColumn(name="user_id")}
     )
-    Set<User> likes = new HashSet<>();
+    private Set<User> likes = new HashSet<>();
 
     public Message() {}
 

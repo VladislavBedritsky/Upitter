@@ -7,10 +7,6 @@
     <groupId>com.example</groupId>
     <artifactId>twitter</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>upitter</name>
-    <url>http://maven.apache.org</url>
-
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -74,6 +70,14 @@
             <version>3.0.0-preview</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>2.2.1.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
@@ -88,27 +92,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- heroku-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals><goal>copy</goal></goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.github.jsimone</groupId>
-                                    <artifactId>webapp-runner</artifactId>
-                                    <version>9.0.27.0</version>
-                                    <destFileName>webapp-runner.jar</destFileName>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
