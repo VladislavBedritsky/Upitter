@@ -1,4 +1,5 @@
 # This application is a simple clone of Twitter
+https://upitter.herokuapp.com/
 
 
 Used technologies:
@@ -11,7 +12,9 @@ Spring MVC
 
 Spring Security
 
-Spring data
+Spring Data
+
+Spring Mail
 
 Hibernate
 
