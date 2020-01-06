@@ -1,6 +1,8 @@
 # This application is a simple clone of Twitter
 https://upitter.herokuapp.com/
 
+This project just for experience and fun.
+The application is in progress.
 
 Used technologies:
 
