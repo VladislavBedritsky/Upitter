@@ -1,0 +1,29 @@
+version: "3"
+services:
+  ex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ex
+    ports:
+      - 8080:8080
+    networks:
+      - empl-mysql
+    depends_on:
+      - mysqldb
+    container_name: ex
+
+  mysqldb:
+    image: mysql:latest
+    networks:
+      - empl-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=twitter
+    container_name: mysqldb
+
+networks:
+  empl-mysql:
+
+
+

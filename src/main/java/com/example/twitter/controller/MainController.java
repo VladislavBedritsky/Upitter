@@ -42,8 +42,6 @@ public class MainController {
 
         model.put("messages",messages);
 
-        userService.userRole(user, model);
-
         return "main";
     }
 

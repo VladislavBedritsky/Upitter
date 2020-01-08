@@ -2,6 +2,7 @@ package com.example.twitter.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -118,5 +119,24 @@ public class Message {
 
     public void setLikes(Set<User> likes) {
         this.likes = likes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message = (Message) o;
+        return Objects.equals(id, message.id) &&
+                Objects.equals(text, message.text) &&
+                Objects.equals(tag, message.tag) &&
+                Objects.equals(user, message.user) &&
+                Objects.equals(filename, message.filename) &&
+                Objects.equals(time, message.time) &&
+                Objects.equals(likes, message.likes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, text, tag, user, filename, time, likes);
     }
 }
