@@ -1,23 +1,41 @@
 # This application is a simple clone of Twitter
-https://upitter.herokuapp.com/
 
-This project just for experience and fun.
+
 The application is in progress.
 
-Used technologies:
+## Used technologies:
 
-Maven
+* Maven
+* Heroku
+* Docker 
 
-Spring Boot 
+### Backend:
 
-Spring MVC
+* Spring Boot 
+* Spring MVC
+* Spring Security
+* Spring Data JPA
+* Spring Mail
+* ORM(Hibernate)
 
-Spring Security
+### Frontend:
 
-Spring Data
+* Bootstrap
+* Mustache
+* HTML5
+* CSS3
 
-Spring Mail
+### How to run:
 
-Hibernate
+1. Tomcat `http://localhost:8080`
 
-Mustache, HTML5, CSS3
+2. Docker `http://{IP_ADDRESS_OF_YOUR_VIRTUAL_MACHINE}:8080`
+
+        Go to file 'script.sh' and follow the steps
+
+3. Follow the link 
+         `https://upitter.herokuapp.com/`
+                 
+        In this way, 
+        the database is very slow, because it’s free
+        and may work uncorrectly.
