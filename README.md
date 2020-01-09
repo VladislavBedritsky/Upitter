@@ -9,6 +9,10 @@ The application is in progress.
 * Heroku
 * Docker 
 
+### Database:
+
+* MySQL
+
 ### Backend:
 
 * Spring Boot 
